@@ -12,7 +12,7 @@ import java.time.{DayOfWeek, LocalDate, Month}
        |  body { font-family: sans-serif; font-size: 90%; }
        |  table { border-collapse: collapse; }
        |  table td { border-top: 1px solid red; border-bottom: 1px solid red; }
-       |  .day { text-align: end; width: 2em; padding: 0.1em; }
+       |  .day { text-align: end; width: 1.4em; padding: 0.1em; }
        |  .day-of-week { width: 1em; padding-left: 0.5em; }
        |  .day-name { color: #cc9999; font-size: 80%; }
        |  .weekend { background: #ffeeee; }
@@ -74,7 +74,7 @@ private val holidays = Map(
   LocalDate.parse("2023-06-05") -> "A doua zi de Rusalii",
   LocalDate.parse("2023-08-15") -> "Adormirea Maicii Domnului",
   LocalDate.parse("2023-11-30") -> "Sfântul Andrei",
-  LocalDate.parse("2023-12-01") -> "Marea Uniri",
+  LocalDate.parse("2023-12-01") -> "Marea Unire",
   LocalDate.parse("2023-12-25") -> "Crăciun",
   LocalDate.parse("2023-12-26") -> "A doua zi de Crăciun",
 )
