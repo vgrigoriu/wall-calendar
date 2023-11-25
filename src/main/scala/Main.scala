@@ -5,10 +5,11 @@ import java.time.Month._
   val year = 2024
   val header =
     s"""<!DOCTYPE html>
-       |<html>
+       |<html lang="ro">
        |<head>
-       |  <meta charset="utf-8" />
-       |  <style type="text/css">
+       |  <meta charset="utf-8">
+       |  <title>Calendar $year</title>
+       |  <style>
        |    /* This font size makes it so a month fits in a landscape A4 page when printed from the
        |       current version of desktop Safari. */
        |    body { font-family: sans-serif; font-size: 90%; }
@@ -117,7 +118,9 @@ def printMonth(year: Int, month: Month): String =
   var day = LocalDate.of(year, month, 1)
   val sb = StringBuilder(s"""    <table class="month">
        |      <thead>
-       |        <th scope="col" colspan="3">${monthName(month)}</th>
+       |        <tr>
+       |          <th scope="col" colspan="3">${monthName(month)}</th>
+       |        </tr>
        |      </thead>
        |""".stripMargin)
   while day.getMonth == month do
