@@ -38,7 +38,6 @@ import java.time.Month._
   println(getCalendarPage(year, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER))
   println(footer)
 
-
 private val dow = Map(
   DayOfWeek.MONDAY -> "L",
   DayOfWeek.TUESDAY -> "M",
@@ -111,21 +110,19 @@ private val adobeHolidays = Map(
 )
 
 def getCalendarPage(year: Int, months: Month*): String =
-    s"""<div class="months">
+  s"""<div class="months">
        |  ${months.map(printMonth(year, _)).mkString("\n")}
        |</div>""".stripMargin
 
 def printMonth(year: Int, month: Month): String =
   var day = LocalDate.of(year, month, 1)
-  val sb = StringBuilder(
-    s"""<table class="month">
+  val sb = StringBuilder(s"""<table class="month">
        |  <thead>
        |    <th scope="col" colspan="3">${monthName(month)}</th>
        |  </thead>
        |""".stripMargin)
   while day.getMonth == month do
-    sb.append(
-      s"""<tr ${dowClass(day)}>
+    sb.append(s"""<tr ${dowClass(day)}>
          |  <td class="day">${day.getDayOfMonth}</td>
          |  <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
          |  <td class="${holidayStyle(day)}">${holidayName(day)}</td>
@@ -140,15 +137,11 @@ private def holidayName(day: LocalDate): String =
   holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
 
 private def holidayStyle(day: LocalDate): String =
-  if holidays.contains(day) then
-    "day-name"
-  else if adobeHolidays.contains(day) then
-    "adobe-day-name"
-  else
-    ""
+  if holidays.contains(day) then "day-name"
+  else if adobeHolidays.contains(day) then "adobe-day-name"
+  else ""
 
 private def dowClass(date: LocalDate): String =
   if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(date.getDayOfWeek) then
     """ class="weekend""""
-  else
-    ""
+  else ""
