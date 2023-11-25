@@ -9,22 +9,21 @@ import java.time.Month._
        |<head>
        |  <meta charset="utf-8" />
        |  <style type="text/css">
-       |  /* This font size makes it so a month fits in a landscape A4 page when printed from the
-       |     current version of desktop Safari. */
-       |  body { font-family: sans-serif; font-size: 90%; }
-       |  table { border-collapse: collapse; }
-       |  table td { border-top: 1px solid red; border-bottom: 1px solid red; }
-       |  .day { text-align: end; width: 1.4em; padding: 0.1em; }
-       |  .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
-       |  .day-name { color: #cc9999; font-size: 80%; }
-       |  .adobe-day-name { color: #cc99cc; font-size: 80%; }
-       |  .weekend { background: #fff5f5; }
-       |  .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
-       |  .month { flex: 1; }
+       |    /* This font size makes it so a month fits in a landscape A4 page when printed from the
+       |       current version of desktop Safari. */
+       |    body { font-family: sans-serif; font-size: 90%; }
+       |    table { border-collapse: collapse; }
+       |    table td { border-top: 1px solid red; border-bottom: 1px solid red; }
+       |    .day { text-align: end; width: 1.4em; padding: 0.1em; }
+       |    .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
+       |    .day-name { color: #cc9999; font-size: 80%; }
+       |    .adobe-day-name { color: #cc99cc; font-size: 80%; }
+       |    .weekend { background: #fff5f5; }
+       |    .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
+       |    .month { flex: 1; }
        |  </style>
        |</head>
-       |<body>
-       |""".stripMargin
+       |<body>""".stripMargin
 
   val footer =
     s"""</body>
@@ -110,27 +109,27 @@ private val adobeHolidays = Map(
 )
 
 def getCalendarPage(year: Int, months: Month*): String =
-  s"""<div class="months">
-       |  ${months.map(printMonth(year, _)).mkString("\n")}
-       |</div>""".stripMargin
+  s"""  <div class="months">
+       |${months.map(printMonth(year, _)).mkString("\n")}
+       |  </div>""".stripMargin
 
 def printMonth(year: Int, month: Month): String =
   var day = LocalDate.of(year, month, 1)
-  val sb = StringBuilder(s"""<table class="month">
-       |  <thead>
-       |    <th scope="col" colspan="3">${monthName(month)}</th>
-       |  </thead>
+  val sb = StringBuilder(s"""    <table class="month">
+       |      <thead>
+       |        <th scope="col" colspan="3">${monthName(month)}</th>
+       |      </thead>
        |""".stripMargin)
   while day.getMonth == month do
-    sb.append(s"""<tr${dowClass(day)}>
-         |  <td class="day">${day.getDayOfMonth}</td>
-         |  <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
-         |  <td${holidayClass(day)}>${holidayName(day)}</td>
-         |</tr>
+    sb.append(s"""      <tr${dowClass(day)}>
+         |        <td class="day">${day.getDayOfMonth}</td>
+         |        <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
+         |        <td${holidayClass(day)}>${holidayName(day)}</td>
+         |      </tr>
          |""".stripMargin)
     day = day.plusDays(1)
 
-  sb.append("</table>")
+  sb.append("    </table>")
   sb.toString
 
 private def holidayName(day: LocalDate): String =
