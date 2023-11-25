@@ -18,7 +18,7 @@ import java.time.Month._
        |  .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
        |  .day-name { color: #cc9999; font-size: 80%; }
        |  .adobe-day-name { color: #cc99cc; font-size: 80%; }
-       |  .weekend { background: #ffeeee; }
+       |  .weekend { background: #fff0f0; }
        |  .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |  .month { flex: 1; }
        |  </style>
