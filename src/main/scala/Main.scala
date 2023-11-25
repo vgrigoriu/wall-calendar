@@ -1,7 +1,8 @@
 import java.time.{DayOfWeek, LocalDate, Month}
+import java.time.Month._
 
 @main def hello(): Unit =
-  val year = 2023
+  val year = 2024
   val header =
     s"""<!DOCTYPE html>
        |<html>
@@ -15,6 +16,7 @@ import java.time.{DayOfWeek, LocalDate, Month}
        |  .day { text-align: end; width: 1.4em; padding: 0.1em; }
        |  .day-of-week { width: 1em; padding-left: 0.5em; }
        |  .day-name { color: #cc9999; font-size: 80%; }
+       |  .adobe-day-name { color: #cc99cc; font-size: 80%; }
        |  .weekend { background: #ffeeee; }
        |  .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |  .month { flex: 1; }
@@ -47,18 +49,18 @@ private val dow = Map(
 )
 
 private val monthName = Map(
-  Month.JANUARY -> "Ianuarie",
-  Month.FEBRUARY -> "Februarie",
-  Month.MARCH -> "Martie",
-  Month.APRIL -> "Aprilie",
-  Month.MAY -> "Mai",
-  Month.JUNE -> "Iunie",
-  Month.JULY -> "Iulie",
-  Month.AUGUST -> "August",
-  Month.SEPTEMBER -> "Septembrie",
-  Month.OCTOBER -> "Octombrie",
-  Month.NOVEMBER -> "Noiembrie",
-  Month.DECEMBER -> "Decembrie",
+  JANUARY -> "Ianuarie",
+  FEBRUARY -> "Februarie",
+  MARCH -> "Martie",
+  APRIL -> "Aprilie",
+  MAY -> "Mai",
+  JUNE -> "Iunie",
+  JULY -> "Iulie",
+  AUGUST -> "August",
+  SEPTEMBER -> "Septembrie",
+  OCTOBER -> "Octombrie",
+  NOVEMBER -> "Noiembrie",
+  DECEMBER -> "Decembrie",
 )
 
 private val holidays = Map(
@@ -77,6 +79,34 @@ private val holidays = Map(
   LocalDate.parse("2023-12-01") -> "Marea Unire",
   LocalDate.parse("2023-12-25") -> "Crăciun",
   LocalDate.parse("2023-12-26") -> "A doua zi de Crăciun",
+  LocalDate.of(2024, JANUARY, 1) -> "Anul nou",
+  LocalDate.of(2024, JANUARY, 2) -> "Anul nou",
+  LocalDate.of(2024, JANUARY, 6) -> "Boboteaza",
+  LocalDate.of(2024, JANUARY, 7) -> "Sf. Ioan",
+  LocalDate.of(2024, JANUARY, 24) -> "Unirea mică",
+  LocalDate.of(2024, MAY, 1) -> "Ziua muncii",
+  LocalDate.of(2024, MAY, 3) -> "Vinerea Mare",
+  LocalDate.of(2024, MAY, 5) -> "Paște",
+  LocalDate.of(2024, MAY, 6) -> "Paște",
+  LocalDate.of(2024, JUNE, 1) -> "Ziua copilului",
+  LocalDate.of(2024, JUNE, 23) -> "Rusalii",
+  LocalDate.of(2024, JUNE, 24) -> "Rusalii",
+  LocalDate.of(2024, AUGUST, 15) -> "Sf. Maria",
+  LocalDate.of(2024, NOVEMBER, 30) -> "Sf. Andrei",
+  LocalDate.of(2024, DECEMBER, 1) -> "Unirea mare",
+  LocalDate.of(2024, DECEMBER, 25) -> "Crăciun",
+  LocalDate.of(2024, DECEMBER, 26) -> "Crăciun",
+)
+
+private val adobeHolidays = Map(
+  LocalDate.of(2024, JANUARY, 5) -> "Boboteaza (in  lieu)",
+  LocalDate.of(2024, JANUARY, 8) -> "Sf. Ioan (in lieu)",
+  LocalDate.of(2024, MAY, 31) -> "Ziua copilului (in lieu)",
+  LocalDate.of(2024, NOVEMBER, 29) -> "Sf. Andrei (in lieu)",
+  LocalDate.of(2024, DECEMBER, 2) -> "Unirea mare (in lieu)",
+  LocalDate.of(2024, DECEMBER, 27) -> "PTO",
+  LocalDate.of(2024, DECEMBER, 30) -> "PTO",
+  LocalDate.of(2024, DECEMBER, 31) -> "PTO",
 )
 
 def getCalendarPage(year: Int, months: Month*): String =
@@ -97,7 +127,7 @@ def printMonth(year: Int, month: Month): String =
       s"""<tr ${dowClass(day)}>
          |  <td class="day">${day.getDayOfMonth}</td>
          |  <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
-         |  <td class="day-name">${holidayName(day)}</td>
+         |  <td class="${holidayStyle(day)}">${holidayName(day)}</td>
          |</tr>
          |""".stripMargin)
     day = day.plusDays(1)
@@ -105,8 +135,16 @@ def printMonth(year: Int, month: Month): String =
   sb.append("</table>")
   sb.toString
 
-private def holidayName(date: LocalDate): String =
-  holidays.getOrElse(date, "")
+private def holidayName(day: LocalDate): String =
+  holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
+
+private def holidayStyle(day: LocalDate): String =
+  if holidays.contains(day) then
+    "day-name"
+  else if adobeHolidays.contains(day) then
+    "adobe-day-name"
+  else
+    ""
 
 private def dowClass(date: LocalDate): String =
   if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(date.getDayOfWeek) then
