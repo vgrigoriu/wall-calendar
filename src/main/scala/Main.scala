@@ -18,7 +18,7 @@ import java.time.Month._
        |  .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
        |  .day-name { color: #cc9999; font-size: 80%; }
        |  .adobe-day-name { color: #cc99cc; font-size: 80%; }
-       |  .weekend { background: #fff0f0; }
+       |  .weekend { background: #fff5f5; }
        |  .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |  .month { flex: 1; }
        |  </style>
@@ -122,10 +122,10 @@ def printMonth(year: Int, month: Month): String =
        |  </thead>
        |""".stripMargin)
   while day.getMonth == month do
-    sb.append(s"""<tr ${dowClass(day)}>
+    sb.append(s"""<tr${dowClass(day)}>
          |  <td class="day">${day.getDayOfMonth}</td>
          |  <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
-         |  <td class="${holidayStyle(day)}">${holidayName(day)}</td>
+         |  <td${holidayClass(day)}>${holidayName(day)}</td>
          |</tr>
          |""".stripMargin)
     day = day.plusDays(1)
@@ -136,9 +136,9 @@ def printMonth(year: Int, month: Month): String =
 private def holidayName(day: LocalDate): String =
   holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
 
-private def holidayStyle(day: LocalDate): String =
-  if holidays.contains(day) then "day-name"
-  else if adobeHolidays.contains(day) then "adobe-day-name"
+private def holidayClass(day: LocalDate): String =
+  if holidays.contains(day) then """ class="day-name""""
+  else if adobeHolidays.contains(day) then """ class="adobe-day-name""""
   else ""
 
 private def dowClass(date: LocalDate): String =

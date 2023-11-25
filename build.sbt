@@ -7,8 +7,6 @@ lazy val root = project
     version := "2024.0.0",
 
     scalaVersion := scala3Version,
-    semanticdbEnabled := true,
-    semanticdbVersion := scalafixSemanticdb.revision,
 
     scalacOptions += "-Werror",
     scalacOptions += "-Wunused:imports",
