@@ -9,7 +9,8 @@ import java.time.Month._
        |<head>
        |  <meta charset="utf-8" />
        |  <style type="text/css">
-       |  /* The font size makes it so a month fits in a landscape A4 page. */
+       |  /* This font size makes it so a month fits in a landscape A4 page when printed from the
+       |     current version of desktop Safari. */
        |  body { font-family: sans-serif; font-size: 90%; }
        |  table { border-collapse: collapse; }
        |  table td { border-top: 1px solid red; border-bottom: 1px solid red; }
