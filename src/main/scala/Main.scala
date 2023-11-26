@@ -21,6 +21,7 @@ import java.time.Month._
        |    .adobe-day-name { color: #cc99cc; font-size: 80%; }
        |    .holiday { background: #fff5f5; }
        |    .school-holiday { background: #f5fff5; }
+       |    .adobe-holiday { background: #f5f5ff; }
        |    .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |    .month { flex: 1; }
        |  </style>
@@ -150,4 +151,5 @@ private def dowClass(date: LocalDate): String =
     ) || holidays.contains(date)
   then """ class="holiday""""
   else if date.isSchoolHoliday then """ class="school-holiday""""
+  else if adobeHolidays.contains(date) then """ class="adobe-holiday""""
   else ""
