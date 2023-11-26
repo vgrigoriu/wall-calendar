@@ -145,8 +145,9 @@ private def holidayClass(day: LocalDate): String =
   else ""
 
 private def dowClass(date: LocalDate): String =
-  if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(date.getDayOfWeek) || holidays.contains(date) then
-    """ class="weekend""""
-  else if date.isSchoolHoliday then
-    """ class="school-holiday""""
+  if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(
+      date.getDayOfWeek,
+    ) || holidays.contains(date)
+  then """ class="weekend""""
+  else if date.isSchoolHoliday then """ class="school-holiday""""
   else ""
