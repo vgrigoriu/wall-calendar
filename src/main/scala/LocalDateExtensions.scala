@@ -26,6 +26,7 @@ extension (day: LocalDate) {
   def holidayName: String =
     holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
 
+  def dowInitial: String = day.getDayOfWeek.initial
 
   private def lte(other: LocalDate): Boolean =
     day.isBefore(other) || day.isEqual(other)

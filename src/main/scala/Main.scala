@@ -1,4 +1,4 @@
-import java.time.{DayOfWeek, LocalDate, Month}
+import java.time.{LocalDate, Month}
 import java.time.Month.*
 
 @main def hello(): Unit =
@@ -40,16 +40,6 @@ import java.time.Month.*
   println(getCalendarPage(year, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER))
   println(footer)
 
-private val dow = Map(
-  DayOfWeek.MONDAY -> "L",
-  DayOfWeek.TUESDAY -> "M",
-  DayOfWeek.WEDNESDAY -> "M",
-  DayOfWeek.THURSDAY -> "J",
-  DayOfWeek.FRIDAY -> "V",
-  DayOfWeek.SATURDAY -> "S",
-  DayOfWeek.SUNDAY -> "D",
-)
-
 private val monthName = Map(
   JANUARY -> "Ianuarie",
   FEBRUARY -> "Februarie",
@@ -82,7 +72,7 @@ def printMonth(year: Int, month: Month): String =
   while day.getMonth == month do
     sb.append(s"""      <tr${dowClass(day)}>
          |        <td class="day">${day.getDayOfMonth}</td>
-         |        <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
+         |        <td class="day-of-week">${day.dowInitial}</td>
          |        <td${holidayClass(day)}>${day.holidayName}</td>
          |      </tr>
          |""".stripMargin)
