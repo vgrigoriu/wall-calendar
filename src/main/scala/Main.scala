@@ -40,21 +40,6 @@ import java.time.Month.*
   println(getCalendarPage(year, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER))
   println(footer)
 
-private val monthName = Map(
-  JANUARY -> "Ianuarie",
-  FEBRUARY -> "Februarie",
-  MARCH -> "Martie",
-  APRIL -> "Aprilie",
-  MAY -> "Mai",
-  JUNE -> "Iunie",
-  JULY -> "Iulie",
-  AUGUST -> "August",
-  SEPTEMBER -> "Septembrie",
-  OCTOBER -> "Octombrie",
-  NOVEMBER -> "Noiembrie",
-  DECEMBER -> "Decembrie",
-)
-
 def getCalendarPage(year: Int, months: Month*): String =
   s"""  <div class="months">
        |${months.map(printMonth(year, _)).mkString("\n")}
@@ -65,7 +50,7 @@ def printMonth(year: Int, month: Month): String =
   val sb = StringBuilder(s"""    <table class="month">
        |      <thead>
        |        <tr>
-       |          <th scope="col" colspan="3">${monthName(month)}</th>
+       |          <th scope="col" colspan="3">${month.displayName}</th>
        |        </tr>
        |      </thead>
        |""".stripMargin)
