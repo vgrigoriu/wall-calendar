@@ -1,5 +1,5 @@
-import java.time.Month
-import java.time.Month._
+import java.time.{LocalDate, Month}
+import java.time.Month.*
 
 private val names = Map(
   JANUARY -> "Ianuarie",
@@ -18,4 +18,8 @@ private val names = Map(
 
 extension (month: Month) {
   def displayName: String = names(month)
+
+  def daysIn(year: Int): Iterator[LocalDate] =
+    Iterator.iterate(LocalDate.of(year, month, 1))(_.plusDays(1))
+      .takeWhile(_.getMonth == month)
 }

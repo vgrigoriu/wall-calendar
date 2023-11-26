@@ -46,7 +46,6 @@ def getCalendarPage(year: Int, months: Month*): String =
        |  </div>""".stripMargin
 
 def printMonth(year: Int, month: Month): String =
-  var day = LocalDate.of(year, month, 1)
   val sb = StringBuilder(s"""    <table class="month">
        |      <thead>
        |        <tr>
@@ -54,14 +53,15 @@ def printMonth(year: Int, month: Month): String =
        |        </tr>
        |      </thead>
        |""".stripMargin)
-  while day.getMonth == month do
-    sb.append(s"""      <tr${dowClass(day)}>
+
+  for (day <- month.daysIn(year))
+    sb.append(
+      s"""      <tr${dowClass(day)}>
          |        <td class="day">${day.getDayOfMonth}</td>
          |        <td class="day-of-week">${day.dowInitial}</td>
          |        <td${holidayClass(day)}>${day.holidayName}</td>
          |      </tr>
          |""".stripMargin)
-    day = day.plusDays(1)
 
   sb.append("    </table>")
   sb.toString
