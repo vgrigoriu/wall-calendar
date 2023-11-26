@@ -19,8 +19,5 @@ private object SchoolHolidays {
 }
 
 extension (date: LocalDate) {
-  private def lte(other: LocalDate): Boolean =
-    date.isBefore(other) || date.isEqual(other)
-
   def isSchoolHoliday: Boolean = SchoolHolidays.isSchoolHoliday(date)
 }
