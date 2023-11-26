@@ -23,6 +23,10 @@ extension (day: LocalDate) {
     adobeHolidays.contains(day)
   }
 
+  def holidayName: String =
+    holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
+
+
   private def lte(other: LocalDate): Boolean =
     day.isBefore(other) || day.isEqual(other)
 }

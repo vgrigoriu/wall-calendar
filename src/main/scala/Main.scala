@@ -1,5 +1,3 @@
-import Holidays.{adobeHolidays, holidays}
-
 import java.time.{DayOfWeek, LocalDate, Month}
 import java.time.Month.*
 
@@ -85,16 +83,13 @@ def printMonth(year: Int, month: Month): String =
     sb.append(s"""      <tr${dowClass(day)}>
          |        <td class="day">${day.getDayOfMonth}</td>
          |        <td class="day-of-week">${dow(day.getDayOfWeek)}</td>
-         |        <td${holidayClass(day)}>${holidayName(day)}</td>
+         |        <td${holidayClass(day)}>${day.holidayName}</td>
          |      </tr>
          |""".stripMargin)
     day = day.plusDays(1)
 
   sb.append("    </table>")
   sb.toString
-
-private def holidayName(day: LocalDate): String =
-  holidays.getOrElse(day, adobeHolidays.getOrElse(day, ""))
 
 private def holidayClass(day: LocalDate): String =
   if day.isHoliday then """ class="day-name""""
