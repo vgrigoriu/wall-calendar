@@ -1,4 +1,4 @@
-import Holidays.schoolHolidays
+import Holidays.{holidays, schoolHolidays}
 
 import java.time.{DayOfWeek, LocalDate}
 
@@ -8,6 +8,10 @@ extension (day: LocalDate) {
   def isWeekend: Boolean = weekendDays.contains(
     day.getDayOfWeek,
   )
+
+  def isHoliday: Boolean = {
+    holidays.contains(day)
+  }
 
   def isSchoolHoliday: Boolean = {
     schoolHolidays.exists { case (start, end) =>
