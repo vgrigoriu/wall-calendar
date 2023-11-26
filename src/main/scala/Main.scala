@@ -46,7 +46,7 @@ def getCalendarPage(year: Int, months: Month*): String =
        |  </div>""".stripMargin
 
 def printMonth(year: Int, month: Month): String =
-  val sb = StringBuilder(s"""    <table class="month">
+  val monthTable = StringBuilder(s"""    <table class="month">
        |      <thead>
        |        <tr>
        |          <th scope="col" colspan="3">${month.displayName}</th>
@@ -55,7 +55,7 @@ def printMonth(year: Int, month: Month): String =
        |""".stripMargin)
 
   for (day <- month.daysIn(year))
-    sb.append(
+    monthTable.append(
       s"""      <tr${dowClass(day)}>
          |        <td class="day">${day.getDayOfMonth}</td>
          |        <td class="day-of-week">${day.dowInitial}</td>
@@ -63,8 +63,8 @@ def printMonth(year: Int, month: Month): String =
          |      </tr>
          |""".stripMargin)
 
-  sb.append("    </table>")
-  sb.toString
+  monthTable.append("    </table>")
+  monthTable.toString
 
 private def holidayClass(day: LocalDate): String =
   if day.isHoliday then """ class="day-name""""
