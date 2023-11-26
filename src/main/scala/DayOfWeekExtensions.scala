@@ -10,6 +10,6 @@ private val initials = Map(
   DayOfWeek.SUNDAY -> "D",
 )
 
-extension(dow: DayOfWeek) {
+extension (dow: DayOfWeek) {
   def initial: String = initials(dow)
 }
