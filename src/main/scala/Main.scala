@@ -98,12 +98,12 @@ private def holidayName(day: LocalDate): String =
 
 private def holidayClass(day: LocalDate): String =
   if day.isHoliday then """ class="day-name""""
-  else if adobeHolidays.contains(day) then """ class="adobe-day-name""""
+  else if day.isAdobeHoliday then """ class="adobe-day-name""""
   else ""
 
 private def dowClass(date: LocalDate): String =
   if date.isWeekend || date.isHoliday
   then """ class="holiday""""
   else if date.isSchoolHoliday then """ class="school-holiday""""
-  else if adobeHolidays.contains(date) then """ class="adobe-holiday""""
+  else if date.isAdobeHoliday then """ class="adobe-holiday""""
   else ""

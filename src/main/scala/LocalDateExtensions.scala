@@ -1,4 +1,4 @@
-import Holidays.{holidays, schoolHolidays}
+import Holidays.{adobeHolidays, holidays, schoolHolidays}
 
 import java.time.{DayOfWeek, LocalDate}
 
@@ -17,6 +17,10 @@ extension (day: LocalDate) {
     schoolHolidays.exists { case (start, end) =>
       start.lte(day) && day.lte(end)
     }
+  }
+
+  def isAdobeHoliday: Boolean = {
+    adobeHolidays.contains(day)
   }
 
   private def lte(other: LocalDate): Boolean =
