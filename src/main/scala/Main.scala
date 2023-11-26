@@ -20,6 +20,7 @@ import java.time.Month._
        |    .day-name { color: #cc9999; font-size: 80%; }
        |    .adobe-day-name { color: #cc99cc; font-size: 80%; }
        |    .weekend { background: #fff5f5; }
+       |    .school-holiday { background: #f5fff5; }
        |    .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |    .month { flex: 1; }
        |  </style>
@@ -144,6 +145,8 @@ private def holidayClass(day: LocalDate): String =
   else ""
 
 private def dowClass(date: LocalDate): String =
-  if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(date.getDayOfWeek) then
+  if Set(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY).contains(date.getDayOfWeek) || holidays.contains(date) then
     """ class="weekend""""
+  else if date.isSchoolHoliday then
+    """ class="school-holiday""""
   else ""
