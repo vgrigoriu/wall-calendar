@@ -15,7 +15,7 @@ import java.time.Month.*
        |    body { font-family: sans-serif; font-size: 90%; }
        |    table { border-collapse: collapse; }
        |    table td { border-top: 1px solid red; border-bottom: 1px solid red; }
-       |    .day { text-align: end; width: 1.4em; padding: 0.1em; }
+       |    .day { text-align: end; width: 1.4em; padding: 0.125em; }
        |    .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
        |    .day-name { color: #cc9999; font-size: 80%; }
        |    .adobe-day-name { color: #cc99cc; font-size: 80%; }
