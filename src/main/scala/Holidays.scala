@@ -49,7 +49,13 @@ object Holidays {
   val adobeHolidays: Map[LocalDate, String] = Map(
     LocalDate.of(2024, JANUARY, 5) -> "Boboteaza (in  lieu)",
     LocalDate.of(2024, JANUARY, 8) -> "Sf. Ioan (in lieu)",
+    LocalDate.of(2024, FEBRUARY, 9) -> "Global Wellbeing",
+    LocalDate.of(2024, MARCH, 29) -> "Global Wellbeing",
+    LocalDate.of(2024, MAY, 6) -> "Global Wellbeing",
     LocalDate.of(2024, MAY, 31) -> "Ziua copilului (in lieu)",
+    LocalDate.of(2024, JULY, 1) -> "Global Wellbeing",
+    LocalDate.of(2024, SEPTEMBER, 20) -> "Global Wellbeing",
+    LocalDate.of(2024, OCTOBER, 25) -> "Global Wellbeing",
     LocalDate.of(2024, NOVEMBER, 29) -> "Sf. Andrei (in lieu)",
     LocalDate.of(2024, DECEMBER, 2) -> "Unirea mare (in lieu)",
     LocalDate.of(2024, DECEMBER, 27) -> "PTO",

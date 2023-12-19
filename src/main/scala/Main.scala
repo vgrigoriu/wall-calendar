@@ -19,9 +19,9 @@ import java.time.Month.*
        |    .day-of-week { width: 1em; padding-left: 0.5em; color: #cccccc; }
        |    .day-name { color: #cc9999; font-size: 80%; }
        |    .adobe-day-name { color: #cc99cc; font-size: 80%; }
-       |    .holiday { background: #ffeeee; }
-       |    .school-holiday { background: #eeffee; }
-       |    .adobe-holiday { background: #eeeeff; }
+       |    .holiday { background: #fff0f0; }
+       |    .school-holiday { background: #ccffcc; }
+       |    .adobe-holiday { background: #f0f0ff; }
        |    .months { display: flex; justify-content: space-around; gap: 2em; align-items: flex-start; }
        |    .month { flex: 1; }
        |  </style>
