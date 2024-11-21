@@ -35,6 +35,21 @@ object Holidays {
     LocalDate.of(2024, DECEMBER, 1) -> "Unirea mare",
     LocalDate.of(2024, DECEMBER, 25) -> "Crăciun",
     LocalDate.of(2024, DECEMBER, 26) -> "Crăciun",
+    // 2025
+    LocalDate.of(2025, JANUARY, 1) -> "Anul nou",
+    LocalDate.of(2025, JANUARY, 2) -> "Anul nou",
+    LocalDate.of(2025, JANUARY, 6) -> "Boboteaza",
+    LocalDate.of(2025, JANUARY, 7) -> "Sf. Ioan",
+    LocalDate.of(2025, JANUARY, 24) -> "Mica Unire",
+    LocalDate.of(2025, APRIL, 18) -> "Vinerea Mare",
+    LocalDate.of(2025, APRIL, 20) -> "Paște",
+    LocalDate.of(2025, APRIL, 21) -> "Paște",
+    LocalDate.of(2025, MAY, 1) -> "Ziua muncii",
+    LocalDate.of(2025, JUNE, 9) -> "Rusalii",
+    LocalDate.of(2025, AUGUST, 15) -> "Sf. Maria",
+    LocalDate.of(2025, DECEMBER, 1) -> "Marea Unire",
+    LocalDate.of(2025, DECEMBER, 25) -> "Crăciun",
+    LocalDate.of(2025, DECEMBER, 26) -> "Crăciun",
   )
 
   val schoolHolidays: Seq[(LocalDate, LocalDate)] = List(
@@ -44,6 +59,14 @@ object Holidays {
     LocalDate.of(2024, JUNE, 22) -> LocalDate.of(2024, SEPTEMBER, 8),
     LocalDate.of(2024, OCTOBER, 28) -> LocalDate.of(2024, NOVEMBER, 1),
     LocalDate.of(2024, DECEMBER, 23) -> LocalDate.of(2024, DECEMBER, 31),
+    // 2025
+    LocalDate.of(2025, FEBRUARY, 17) -> LocalDate.of(2025, FEBRUARY, 21),
+    LocalDate.of(2025, APRIL, 18) -> LocalDate.of(2025, APRIL, 25),
+    LocalDate.of(2025, JUNE, 23) -> LocalDate.of(2025, SEPTEMBER, 5),
+    // ???
+    LocalDate.of(2025, OCTOBER, 27) -> LocalDate.of(2025, OCTOBER, 31),
+    // ???
+    LocalDate.of(2025, DECEMBER, 22) -> LocalDate.of(2025, DECEMBER, 31),
   )
 
   val adobeHolidays: Map[LocalDate, String] = Map(
@@ -61,5 +84,15 @@ object Holidays {
     LocalDate.of(2024, DECEMBER, 27) -> "PTO",
     LocalDate.of(2024, DECEMBER, 30) -> "PTO",
     LocalDate.of(2024, DECEMBER, 31) -> "PTO",
+    // 2025
+    LocalDate.of(2025, MARCH, 24) -> "Global Wellbeing",
+    LocalDate.of(2025, MAY, 2) -> "Global Wellbeing",
+    LocalDate.of(2025, MAY, 30) -> "Ziua copilului (in lieu)",
+    LocalDate.of(2025, JULY, 4) -> "Global Wellbeing",
+    LocalDate.of(2025, SEPTEMBER, 26) -> "Global Wellbeing",
+    LocalDate.of(2025, NOVEMBER, 28) -> "Sf. Andrei (in lieu)",
+    LocalDate.of(2025, DECEMBER, 29) -> "PTO",
+    LocalDate.of(2025, DECEMBER, 30) -> "PTO",
+    LocalDate.of(2025, DECEMBER, 31) -> "PTO",
   )
 }

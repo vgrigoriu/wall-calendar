@@ -2,7 +2,7 @@ import java.time.{LocalDate, Month}
 import java.time.Month.*
 
 @main def hello(): Unit =
-  val year = 2024
+  val year = 2025
   val header =
     s"""<!DOCTYPE html>
        |<html lang="ro">
