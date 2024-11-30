@@ -2,7 +2,7 @@
 
 ## Usage
 
-- Change `year` to the year you want to print.
-- Add whatever holidays you want.
-- `sbt --error run >$YEAR.html` (to remove `sbt` output that interferes with the html)
+- Add holidays for the year you want to print.
+- `sbt --error run` or `sbt --error "run 2023"` (`--error` removes `sbt` output that interferes with
+  the html).
 - Open the html in Safari and print it to PDF, A4 landscape, no headers/footers, print backgrounds.

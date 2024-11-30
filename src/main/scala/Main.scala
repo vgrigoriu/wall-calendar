@@ -1,8 +1,8 @@
 import java.time.{LocalDate, Month}
 import java.time.Month.*
 
-@main def hello(): Unit =
-  val year = 2025
+@main def hello(args: String*): Unit =
+  val year = if args.isEmpty then LocalDate.now.getYear + 1 else args(0).toInt
   val header =
     s"""<!DOCTYPE html>
        |<html lang="ro">
