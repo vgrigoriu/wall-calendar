@@ -1,5 +1,7 @@
 import java.time.{LocalDate, Month}
 import java.time.Month.*
+import java.io.{BufferedWriter, FileWriter, File}
+import scala.util.Using
 
 @main def hello(args: String*): Unit =
   val year = if args.isEmpty then LocalDate.now.getYear + 1 else args(0).toInt
@@ -33,12 +35,14 @@ import java.time.Month.*
        |</html>
        |""".stripMargin
 
-  println(header)
-  println(getCalendarPage(year, Month.JANUARY, Month.FEBRUARY, Month.MARCH))
-  println(getCalendarPage(year, Month.APRIL, Month.MAY, Month.JUNE))
-  println(getCalendarPage(year, Month.JULY, Month.AUGUST, Month.SEPTEMBER))
-  println(getCalendarPage(year, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER))
-  println(footer)
+  Using(BufferedWriter(FileWriter(File(f"$year.html")))) { bw =>
+    bw.write(header); bw.newLine()
+    bw.write(getCalendarPage(year, Month.JANUARY, Month.FEBRUARY, Month.MARCH)); bw.newLine()
+    bw.write(getCalendarPage(year, Month.APRIL, Month.MAY, Month.JUNE)); bw.newLine()
+    bw.write(getCalendarPage(year, Month.JULY, Month.AUGUST, Month.SEPTEMBER)); bw.newLine()
+    bw.write(getCalendarPage(year, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER)); bw.newLine()
+    bw.write(footer); bw.newLine()
+  }
 
 def getCalendarPage(year: Int, months: Month*): String =
   s"""  <div class="months">
