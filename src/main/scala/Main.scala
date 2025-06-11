@@ -1,5 +1,4 @@
 import java.time.{LocalDate, Month}
-import java.time.Month.*
 import java.io.{BufferedWriter, FileWriter, File}
 import scala.util.Using
 
