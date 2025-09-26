@@ -2,14 +2,15 @@
 
 #show table.cell.where(y: 0): strong
 
-#set table(
-  fill: (_, y) => (rgb("FFEEEE"), none, none, none, none, none, rgb("FFEEEE")).at(calc.rem(y, 7)),
-)
-
 #table(
   columns: (auto, 1fr, auto),
   align: (right, left, right),
   stroke: (x: none),
+  fill: (_, y) => {
+    if y == 0 {none}
+    else if calc.rem(y, 7) == 0 {rgb("ffeeee")}
+    else if calc.rem(y, 7) == 6 {rgb("ffeeee")}
+  },
   table.header[][Ianuarie][],
   [ 1],[L],[],
   [ 2],[M],[],
