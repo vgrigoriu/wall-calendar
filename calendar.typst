@@ -5,7 +5,7 @@
 #set table(
   columns: (auto, 1fr, auto),
   align: (right, left, right),
-  stroke: (x: none),
+  stroke: (x: none, y: 0.5pt + gray),
 )
 
 #let weekday(dayOfMonth, dayOfWeek) = return ([#dayOfMonth],[#dayOfWeek],[])
@@ -16,16 +16,16 @@
   table.cell([], fill: rgb("ffdddd")),
 )
 #let vacatio(dayOfMonth, dayOfWeek) = return (
-  table.cell([#dayOfMonth], fill: rgb("eeffee")),
-  table.cell([#dayOfWeek], fill: rgb("eeffee")),
-  table.cell([], fill: rgb("eeffee")),
+  table.cell([#dayOfMonth], fill: rgb("ddffdd")),
+  table.cell([#dayOfWeek], fill: rgb("ddffdd")),
+  table.cell([], fill: rgb("ddffdd")),
 )
 #let holiday(dayOfMonth, dayOfWeek, holiday) = return (
   table.cell([#dayOfMonth], fill: rgb("ffdddd")),
   table.cell([#dayOfWeek], fill: rgb("ffdddd")),
   table.cell(text([#holiday], style: "italic", size: 9pt), fill: rgb("ffdddd")),
 )
-#let endOfWeek = table.hline(stroke: 4pt + red)
+#let endOfWeek = table.hline(stroke: 3pt + red)
 
 #table(
   table.header[][Ianuarie][],
