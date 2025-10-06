@@ -20,6 +20,11 @@
   table.cell([#dayOfWeek], fill: rgb("ddffdd")),
   table.cell([], fill: rgb("ddffdd")),
 )
+#let adbeday(dayOfMonth, dayOfWeek, holiday) = return (
+  table.cell([#dayOfMonth], fill: rgb("ddffff")),
+  table.cell([#dayOfWeek], fill: rgb("ddffff")),
+  table.cell(text([#holiday], style: "italic", size: 9pt), fill: rgb("ddffff")),
+)
 #let holiday(dayOfMonth, dayOfWeek, holiday) = return (
   table.cell([#dayOfMonth], fill: rgb("ffdddd")),
   table.cell([#dayOfWeek], fill: rgb("ffdddd")),
@@ -54,7 +59,7 @@
   ..weekday(20, "M"),
   ..weekday(21, "M"),
   ..weekday(22, "J"),
-  ..holiday(23,"V","Unirea Principatelor (in lieu)"),
+  ..adbeday(23,"V","Unirea Principatelor (in lieu)"),
   ..holiday(24,"S","Unirea Principatelor"),
   ..weekend(25, "D"),
   endOfWeek,
@@ -328,7 +333,7 @@
   ..weekday(11, "M"),
   ..weekday(12, "M"),
   ..weekday(13, "J"),
-  ..holiday(14, "V", "Sf. Maria (in lieu)"),
+  ..adbeday(14, "V", "Sf. Maria (in lieu)"),
   ..holiday(15, "S", "Sf. Maria"),
   ..weekend(16, "D"),
   endOfWeek,
