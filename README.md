@@ -10,7 +10,7 @@
 
 - using Python + Typst:
 
-      YEAR=2025
+      YEAR=2026
       python3 calendar_days.py $YEAR >"calendar$YEAR.typ" && \
       typst compile "calendar$YEAR.typ" && \
       open "calendar$YEAR.pdf"
