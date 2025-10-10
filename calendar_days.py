@@ -11,7 +11,7 @@ header = '''#set page(paper: "a4", flipped: true, margin: 11pt, columns: 3)
 #set table(
   columns: (auto, 1fr, auto),
   align: (right, left, right),
-  stroke: (x: none),
+  stroke: (x: none, y: 0.5pt + gray),
 )
 
 #let weekday(dayOfMonth, dayOfWeek) = return ([#dayOfMonth],[#dayOfWeek],[])
@@ -22,17 +22,21 @@ header = '''#set page(paper: "a4", flipped: true, margin: 11pt, columns: 3)
   table.cell([], fill: rgb("ffdddd")),
 )
 #let vacatio(dayOfMonth, dayOfWeek) = return (
-  table.cell([#dayOfMonth], fill: rgb("eeffee")),
-  table.cell([#dayOfWeek], fill: rgb("eeffee")),
-  table.cell([], fill: rgb("eeffee")),
+  table.cell([#dayOfMonth], fill: rgb("ddffdd")),
+  table.cell([#dayOfWeek], fill: rgb("ddffdd")),
+  table.cell([], fill: rgb("ddffdd")),
+)
+#let adbeday(dayOfMonth, dayOfWeek, holiday) = return (
+  table.cell([#dayOfMonth], fill: rgb("ddffff")),
+  table.cell([#dayOfWeek], fill: rgb("ddffff")),
+  table.cell(text([#holiday], style: "italic", size: 9pt), fill: rgb("ddffff")),
 )
 #let holiday(dayOfMonth, dayOfWeek, holiday) = return (
   table.cell([#dayOfMonth], fill: rgb("ffdddd")),
   table.cell([#dayOfWeek], fill: rgb("ffdddd")),
   table.cell(text([#holiday], style: "italic", size: 9pt), fill: rgb("ffdddd")),
 )
-#let endOfWeek = table.hline(stroke: 4pt + red)
-
+#let endOfWeek = table.hline(stroke: 3pt + red)
 '''
 
 print(header)
@@ -64,6 +68,26 @@ romanian_months = {
     12: 'Decembrie'
 }
 
+holidays = {
+    2026: {
+        1: {
+            1: "Anul nou",
+            2: "Anul nou",
+            6: "Boboteaza",
+            7: "Sf. Ioan Botezătorul",
+            24: "Unirea Principatelor",
+        }
+    }
+}
+
+adobe_days = {
+    2026: {
+        1: {
+            23: "Unirea Principatelor (in lieu)",
+        }
+    }
+}
+
 for month in range(1, 13):
     month_name = romanian_months[month]
     print(f"#table(")
@@ -76,12 +100,18 @@ for month in range(1, 13):
         day_of_week = current_date.strftime("%A")
         romanian_initial = romanian_days[day_of_week]
 
-        if day_of_week in ['Saturday', 'Sunday']:
+        day_name = None
+        if day_name := adobe_days.get(year, {}).get(month, {}).get(day):
+            day_type = "adbeday"
+        elif day_name := holidays.get(year, {}).get(month, {}).get(day):
+            day_type = "holiday"
+        elif day_of_week in ['Saturday', 'Sunday']:
             day_type = "weekend"
         else:
             day_type = "weekday"
 
-        print(f'  ..{day_type}({day:>2}, "{romanian_initial}"),')
+        formatted_day_name = f',"{day_name}"' if day_name else ''
+        print(f'  ..{day_type}({day:>2},"{romanian_initial}"{formatted_day_name}),')
 
         if day_of_week == 'Sunday':
             print("  endOfWeek,")
