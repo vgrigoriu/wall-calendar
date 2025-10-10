@@ -76,7 +76,26 @@ holidays = {
             6: "Boboteaza",
             7: "Sf. Ioan Botezătorul",
             24: "Unirea Principatelor",
-        }
+        },
+        4: {
+            10: "Vinerea mare",
+            12: "Paște",
+            13: "Paște",
+        },
+        5: {
+            1: "Ziua muncii",
+            31: "Rusalii"
+        },
+        6: {
+            1: "Rusalii",
+        },
+    }
+}
+
+vacation_days = {
+    2026: {
+        2: [16, 17, 18, 19, 20],
+        4: [6, 7, 8, 9, 14],
     }
 }
 
@@ -105,6 +124,8 @@ for month in range(1, 13):
             day_type = "adbeday"
         elif day_name := holidays.get(year, {}).get(month, {}).get(day):
             day_type = "holiday"
+        elif day in vacation_days.get(year, {}).get(month, []):
+            day_type = "vacatio"
         elif day_of_week in ['Saturday', 'Sunday']:
             day_type = "weekend"
         else:

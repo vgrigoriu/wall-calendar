@@ -230,7 +230,7 @@
   ..weekday(29,"V"),
   ..weekend(30,"S"),
   ..holiday(31,"D","Rusalii"),
-  endOfWeek
+  endOfWeek,
 )
 
 #colbreak()
