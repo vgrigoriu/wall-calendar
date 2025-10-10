@@ -89,6 +89,16 @@ holidays = {
         6: {
             1: "Rusalii",
         },
+        8: {
+            15: "Sf. Maria",
+        },
+        11: {
+            30: "Sf. Andrei",
+        },
+        12: {
+            1: "Ziua națională",
+            25: "Crăciun",
+        },
     }
 }
 
@@ -103,7 +113,28 @@ adobe_days = {
     2026: {
         1: {
             23: "Unirea Principatelor (in lieu)",
-        }
+        },
+        8: {
+            14: "Sf. Maria (in lieu)",
+        },
+    }
+}
+
+notes = {
+    2026: {
+        6: {
+            12: "ultima zi de școală",
+            22: "EN: română",
+            24: "EN: mate",
+        },
+        7: {
+            1: "EN: rezultate",
+            8: "MCR",
+            22: "Repartizare"
+        },
+        9: {
+            7: "prima zi de școală",
+        },
     }
 }
 
@@ -124,6 +155,8 @@ for month in range(1, 13):
             day_type = "adbeday"
         elif day_name := holidays.get(year, {}).get(month, {}).get(day):
             day_type = "holiday"
+        elif day_name := notes.get(year, {}).get(month, {}).get(day):
+            day_type = "noteday"
         elif day in vacation_days.get(year, {}).get(month, []):
             day_type = "vacatio"
         elif day_of_week in ['Saturday', 'Sunday']:
