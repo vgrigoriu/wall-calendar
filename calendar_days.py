@@ -44,25 +44,25 @@ print(header)
 year = int(sys.argv[1])
 
 romanian_days = {
-    'Monday': 'L',
-    'Tuesday': 'M',
+    'Monday':    'L',
+    'Tuesday':   'M',
     'Wednesday': 'M',
-    'Thursday': 'J',
-    'Friday': 'V',
-    'Saturday': 'S',
-    'Sunday': 'D'
+    'Thursday':  'J',
+    'Friday':    'V',
+    'Saturday':  'S',
+    'Sunday':    'D'
 }
 
 romanian_months = {
-    1: 'Ianuarie',
-    2: 'Februarie',
-    3: 'Martie',
-    4: 'Aprilie',
-    5: 'Mai',
-    6: 'Iunie',
-    7: 'Iulie',
-    8: 'August',
-    9: 'Septembrie',
+    1:  'Ianuarie',
+    2:  'Februarie',
+    3:  'Martie',
+    4:  'Aprilie',
+    5:  'Mai',
+    6:  'Iunie',
+    7:  'Iulie',
+    8:  'August',
+    9:  'Septembrie',
     10: 'Octombrie',
     11: 'Noiembrie',
     12: 'Decembrie'
@@ -140,7 +140,7 @@ notes = {
 
 for month in range(1, 13):
     month_name = romanian_months[month]
-    print(f"#table(")
+    print("#table(")
     print(f"  table.header[][{month_name}][],")
 
     days_in_month = calendar.monthrange(year, month)[1]
