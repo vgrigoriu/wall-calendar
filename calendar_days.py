@@ -112,10 +112,10 @@ vacation_days = {
 adobe_days = {
     2026: {
         1: {
-            23: "Unirea Principatelor (in lieu)",
+            23: "Unirea Principatelor",
         },
         8: {
-            14: "Sf. Maria (in lieu)",
+            14: "Sf. Maria",
         },
     }
 }
