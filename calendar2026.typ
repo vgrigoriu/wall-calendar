@@ -135,7 +135,7 @@
   ..weekday(17,"M"),
   ..weekday(18,"M"),
   ..weekday(19,"J"),
-  ..weekday(20,"V"),
+  ..adbeday(20,"V","GWD"),
   ..weekend(21,"S"),
   ..weekend(22,"D"),
   endOfWeek,
@@ -237,8 +237,8 @@
 
 #table(
   table.header[][Iunie][],
-  ..holiday( 1,"L","Rusalii"),
-  ..weekday( 2,"M"),
+  ..holiday( 1,"L","Ziua copilului"),
+  ..adbeday( 2,"M","Rusalii"),
   ..weekday( 3,"M"),
   ..weekday( 4,"J"),
   ..weekday( 5,"V"),
@@ -269,7 +269,7 @@
   ..weekend(27,"S"),
   ..weekend(28,"D"),
   endOfWeek,
-  ..weekday(29,"L"),
+  ..adbeday(29,"L","GWD"),
   ..weekday(30,"M"),
 )
 
@@ -341,7 +341,7 @@
   ..weekday(18,"M"),
   ..weekday(19,"M"),
   ..weekday(20,"J"),
-  ..weekday(21,"V"),
+  ..adbeday(21,"V","GWD"),
   ..weekend(22,"S"),
   ..weekend(23,"D"),
   endOfWeek,
@@ -433,7 +433,7 @@
   ..weekday(27,"M"),
   ..weekday(28,"M"),
   ..weekday(29,"J"),
-  ..weekday(30,"V"),
+  ..adbeday(30,"V","GWD"),
   ..weekend(31,"S"),
 )
 
@@ -513,8 +513,8 @@
   ..weekend(26,"S"),
   ..weekend(27,"D"),
   endOfWeek,
-  ..weekday(28,"L"),
-  ..weekday(29,"M"),
-  ..weekday(30,"M"),
-  ..weekday(31,"J"),
+  ..adbeday(28,"L","Crăciun"),
+  ..adbeday(29,"M","Winter break"),
+  ..adbeday(30,"M","Winter break"),
+  ..adbeday(31,"J","Winter break"),
 )

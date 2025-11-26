@@ -87,7 +87,7 @@ holidays = {
             31: "Rusalii"
         },
         6: {
-            1: "Rusalii",
+            1: "Ziua copilului",
         },
         8: {
             15: "Sf. Maria",
@@ -114,8 +114,25 @@ adobe_days = {
         1: {
             23: "Unirea Principatelor",
         },
+        3: {
+            20: "GWD",
+        },
+        6: {
+            2: "Rusalii",
+            29: "GWD",
+        },
         8: {
             14: "Sf. Maria",
+            21: "GWD",
+        },
+        10: {
+            30: "GWD",
+        },
+        12: {
+            28: "Crăciun",
+            29: "Winter break",
+            30: "Winter break",
+            31: "Winter break",
         },
     }
 }
